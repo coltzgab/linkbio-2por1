@@ -1,45 +1,62 @@
 # 2POR1 · Link Bio
 
-Página única auto-contida para link de bio do Instagram da 2POR1 Audiovisual.
-
-## Preview
-
-Abra `index.html` direto no navegador.
+Página single-file para link de bio da 2POR1 Audiovisual.
 
 ## Estrutura
 
 ```
 linkbio-2por1/
-├── index.html   # página completa, single-file
+├── index.html        # página completa
+├── favicon.svg       # ícone 2/1 gradiente
+├── og-preview.jpg    # social preview (1200×630)
+├── vercel.json       # config Vercel (cache + headers)
+├── .gitignore
 └── README.md
 ```
 
-## Como subir no GitHub Pages
+## Deploy no Vercel
 
-1. Criar repositório `linkbio-2por1` (público) na conta do GitHub
-2. Push do conteúdo desta pasta para o repositório:
-   ```bash
-   cd linkbio-2por1
-   git init
-   git add .
-   git commit -m "Initial commit"
-   git branch -M main
-   git remote add origin https://github.com/SEU_USUARIO/linkbio-2por1.git
-   git push -u origin main
-   ```
-3. No GitHub → Settings → Pages → Source: `main` / root
-4. Após ~1 minuto, a URL fica disponível em:
-   `https://SEU_USUARIO.github.io/linkbio-2por1/`
+### Opção 1 — Importar do GitHub (recomendado)
+
+1. Acessar https://vercel.com/new
+2. Importar o repositório `linkbio-2por1`
+3. **Framework Preset:** Other
+4. **Build Command:** (vazio)
+5. **Output Directory:** (vazio — usa a raiz)
+6. **Install Command:** (vazio)
+7. Clicar em **Deploy**
+
+Pronto. Cada push pro repo dispara um novo deploy automático.
+
+### Opção 2 — Via CLI
+
+```bash
+npm i -g vercel
+cd linkbio-2por1
+vercel --prod
+```
+
+### Domínio personalizado
+
+Settings → Domains → adicionar `2por1.com.br` (ou subdomínio).
+
+## URL atual
+
+- GitHub Pages: https://coltzgab.github.io/linkbio-2por1/
+- Vercel: definir após primeiro deploy (ex: `2por1.vercel.app`)
 
 ## Personalizar
 
-- **WhatsApp**: alterar `https://wa.me/5551998882224` no `index.html`
-- **Tagline / Subtítulo**: blocos de texto dentro de `<a class="block">`
-- **Cores**: variáveis CSS no `:root` do `<style>`
+- **WhatsApp:** alterar `https://wa.me/5551998882224` no `index.html`
+- **Tagline / Subtítulo:** dentro do bloco `.block-sub`
+- **Cores:** variáveis CSS no `:root` do `<style>`
+- **OG preview:** substituir `og-preview.jpg` (1200×630)
 
-## Tecnologias
+## Tech
 
-- HTML/CSS puro, sem dependências
-- Fontes via Google Fonts (Bebas Neue, Inter, Space Mono)
-- Logo 2POR1 inline como SVG vetorial com gradiente
-- Efeito glitch via CSS pseudo-elementos + animação
+- HTML/CSS puro, zero JS, zero dependências
+- Fontes via Google Fonts CDN (Bebas Neue, Inter, Space Mono)
+- SVG inline para o logo (escala sem perda)
+- Glitch via pseudo-elementos + animação CSS
+- Open Graph para preview no WhatsApp/Telegram/Discord
+- Layout responsivo com breakpoints em 480px e 360px
