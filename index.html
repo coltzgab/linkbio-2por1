@@ -232,17 +232,29 @@ main{
 }
 .block-icon{
   flex:0 0 auto;
-  width:64px;
-  height:64px;
+  width:68px;
+  height:68px;
   background:linear-gradient(135deg, var(--lima) 0%, #99c200 100%);
-  border-radius:50%;
+  border-radius:18px;
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 8px 32px rgba(204,255,0,.28);
-  transition:transform .3s ease;
+  box-shadow:0 8px 32px rgba(204,255,0,.28), inset 0 1px 0 rgba(255,255,255,.25);
+  transition:transform .3s ease, box-shadow .3s ease;
+  position:relative;
 }
-.block:hover .block-icon{transform:scale(1.06) rotate(-4deg);}
+.block-icon::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  border-radius:18px;
+  border:1px solid rgba(0,0,0,.08);
+  pointer-events:none;
+}
+.block:hover .block-icon{
+  transform:scale(1.04) rotate(-2deg);
+  box-shadow:0 10px 36px rgba(204,255,0,.35), inset 0 1px 0 rgba(255,255,255,.25);
+}
 .block-icon svg{
   width:32px;
   height:32px;
@@ -357,14 +369,16 @@ main{
   main{padding:32px 16px 56px;}
   .block{padding:24px 20px;}
   .block-inner{gap:16px;}
-  .block-icon{width:56px;height:56px;}
+  .block-icon{width:60px;height:60px;border-radius:16px;}
+  .block-icon::after{border-radius:16px;}
   .block-icon svg{width:28px;height:28px;}
   .block-title{font-size:32px;}
   .block-sub{font-size:13px;}
 }
 @media (max-width:360px){
   .block-inner{gap:12px;}
-  .block-icon{width:48px;height:48px;}
+  .block-icon{width:52px;height:52px;border-radius:14px;}
+  .block-icon::after{border-radius:14px;}
   .block-icon svg{width:24px;height:24px;}
 }
 </style>
